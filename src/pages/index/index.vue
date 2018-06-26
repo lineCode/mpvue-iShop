@@ -1,105 +1,54 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
+    <div>
+        <TopSwiper :tops="tops"></TopSwiper>
+        <BrandList :list="brandList"></BrandList>
+        <div class="section">
+          <div class="section__title">按车身</div>
+          <picker @change="pickChange" :value="index" :range="array">
+            <div class="picker">
+              当前选择：{{array[index]}}
+            </div>
+          </picker>
+        </div>
     </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-  </div>
 </template>
-
 <script>
-import card from '@/components/card'
-
+import {post} from '@/utils/utils'
+import TopSwiper from '@/components/TopSwiper'
+import BrandList from '@/components/BrandList'
 export default {
+  components: {
+    TopSwiper,
+    BrandList
+  },
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      tops: [],
+      brandList: [],
+      array: ['轿车', 'SUV', 'MVP', '跑车'],
+      index: 0
     }
   },
-
-  components: {
-    card
+  mounted () {
+    this.getSwiptList()
+    this.getBrandList()
   },
-
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      wx.navigateTo({ url })
+    async getSwiptList () {
+      let swiptlist = await post('/iCaniShop/shop/getRecommended')
+      this.tops = swiptlist
     },
-    getUserInfo () {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo
-            }
-          })
-        }
-      })
+    async getBrandList () {
+      let brandList = await post('/iCaniShop/shop/getVehicleTopBrand')
+      this.brandList = brandList.topBrandPage
     },
-    clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
+    pickChange (e) {
+      this.index = e.mp.detail.value
     }
-  },
-
-  created () {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
   }
 }
 </script>
+<style>
 
-<style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
 </style>
+

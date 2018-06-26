@@ -21,6 +21,16 @@ export default {
   padding: 200rpx 0;
   box-sizing: border-box;
 }
+.small {
+  font-size: 12px;
+}
+.red {
+  color: #EA5A49;
+}
+.price-icon{
+  font-size: 22px;
+  font-weight: bold;
+}
 /* this rule will be remove */
 * {
   transition: width 2s;
