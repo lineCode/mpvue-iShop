@@ -11,11 +11,14 @@
 		>
 			<div :key="imgindex" v-for="(top,imgindex) in imgs" class="swiptlist">
 				<swiper-item>
-              <img :src="top.seriesDefaultImageURL" 
-              class="slide-image" 
-              mode="aspectFill" 
-              >
+              <div class="img_all">
+                <img src="/static/images/default_bg.jpg" alt="" class="img_bg">
+                <img :src="top.seriesDefaultImageURL" 
+                class="slide-image" 
+                mode="aspectFit" 
+                >
               <div class="hot"></div><span class="hot-text">热卖</span>
+              </div>
 				</swiper-item>
 			</div>
 		</swiper>
@@ -71,9 +74,19 @@ export default {
 <style lang="scss">
 .swiper{
 	margin: 5px 0;
+  .img_all {
+    position: relative;
+    height: 150px;
+  }
+  .img_bg{
+    position: absolute;
+    width: 750rpx;
+    height: 150px;
+  }
 	.slide-image{
     width: 750rpx;
     height: 150px;
+    position: absolute;
 	}
   .hot{
     width: 0;

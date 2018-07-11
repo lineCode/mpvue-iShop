@@ -1,5 +1,5 @@
 // 配置项
-const host = 'http://test.travellerdata.com'
+const host = 'http://www.linkedauto.cn'
 
 const config = {
   host,
