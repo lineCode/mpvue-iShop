@@ -155,11 +155,12 @@ export default {
             flex-direction: column;
             .out,.in {
               display: flex;
+              font-size: 12px;
               align-items: center;
             }
             .img_color{
-              width: 30px;
-              height: 20px;
+              width: 20px;
+              height: 10px;
             }
           }
         }

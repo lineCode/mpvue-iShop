@@ -16,6 +16,7 @@
                 <img :src="top.seriesDefaultImageURL" 
                 class="slide-image" 
                 mode="aspectFit" 
+                @click="goDetail(top.uid)"
                 >
               <div class="hot"></div><span class="hot-text">热卖</span>
               </div>
@@ -67,6 +68,11 @@ export default {
       this.current = e.mp.detail.current
       this.params = this.tops[this.current].brandName + ' ' + this.tops[this.current].seriesName + ' ' + this.tops[this.current].modelName
       this.price = this.tops[this.current].price
+    },
+    goDetail (uid) {
+      wx.navigateTo({
+        url: '/pages/detail/main?uid=' + uid
+      })
     }
   }
 }

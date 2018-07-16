@@ -21,6 +21,13 @@ export default {
   padding: 200rpx 0;
   box-sizing: border-box;
 }
+.center {
+  text-align: center;
+}
+.title{
+  margin: 5px;
+  box-sizing: border-box;
+}
 .small {
   font-size: 12px;
 }
