@@ -1,5 +1,5 @@
 // 配置项
-const host = 'http://www.linkedauto.cn'
+const host = 'https://www.linkedauto.cn'
 
 const config = {
   host,

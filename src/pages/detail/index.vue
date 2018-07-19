@@ -176,6 +176,10 @@
           <text class="long_text">{{detail.vehicleFeatures}}
           </text>
         </div>
+        <div class="btn_all">
+            <div class="collection">加入对比</div>
+            <div class="buy">立即下单</div>
+        </div>
     </div>
 </template>
 <script>
@@ -312,11 +316,40 @@ td{
 }
 .description{
   width: 750rpx;
+  margin-bottom: 50px;
+  box-sizing: border-box;
   .long_text{
     display: inline-block;
     padding: 0 5px;
     box-sizing: border-box;
   }
+}
+.btn_all {
+    width: 750rpx;
+    height: 50px;
+    display: flex;
+    color: #f5f5f5;
+    position: fixed;
+    bottom: 0;
+    font-size: 22px;
+    .collection {
+        width: 40%;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        background: #f6ba40;
+    }
+    .buy {
+        width: 60%;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        background: #EA5149;
+    }
 }
 </style>
 

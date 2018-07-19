@@ -25,7 +25,7 @@ export default {
   text-align: center;
 }
 .title{
-  margin: 5px;
+  padding: 5px;
   box-sizing: border-box;
 }
 .small {
@@ -33,6 +33,9 @@ export default {
 }
 .red {
   color: #EA5A49;
+}
+.bg_hui {
+  background: #eeeeee;
 }
 .price-icon{
   font-size: 22px;

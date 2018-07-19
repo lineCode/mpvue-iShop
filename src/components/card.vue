@@ -4,7 +4,7 @@
     <slot></slot>
     <hr />
     <div class="car_list">
-      <div class="car" v-for="(vehicle,index) in items" :key="index">
+      <div class="car" v-for="(vehicle,index) in items" :key="index" @click="goDetail(vehicle)">
         <div class="img_all">
           <img src="/static/images/default_bg.jpg" alt="" class="img_bg">
           <img :src="vehicle.seriesDefaultImageURL" alt="" class="img" id="img" mode="aspectFit">
@@ -47,7 +47,14 @@
 
 <script>
 export default {
-  props: ['items']
+  props: ['items'],
+  methods: {
+    goDetail (item) {
+      wx.navigateTo({
+        url: '/pages/detail/main?uid=' + item.uid
+      })
+    }
+  }
 }
 </script>
 

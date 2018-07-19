@@ -9,7 +9,7 @@
           </li>
         </ul>
     </div> -->
-    <div class="content">
+    <div class="content" :class="computedClass">
         <div class="content-header">
             <ul class="swipe-list">
                 <li class="swipe" :key="index" v-for="(brand, index) in list">
@@ -22,12 +22,22 @@
 </template>
 <script>
 export default {
-  props: ['list']
+  props: ['list', 'fixed'],
+  computed: {
+    computedClass () {
+      return this.fixed ? 'fixed' : ''
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .content{
     width: 100%;
+}
+.fixed {
+  position: fixed;
+  top: 34px;
+  background: #ffffff;
 }
 .content-header{
     width: 100%;
@@ -51,6 +61,11 @@ export default {
 }
 .swipe{
     padding: 0 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .small{
     display: inline-block;

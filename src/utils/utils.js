@@ -77,3 +77,15 @@ export function formatDate (date) {
 
   return `${t1}`
 }
+
+export function arrayChange (arr) {
+  if (!arr) return
+  let newArr = []
+  let s = Math.ceil(arr.length / 2)
+  let n = 0
+  for (let i = 1; i <= s; i++) {
+    let star = (i - 1) * 2
+    newArr[n++] = arr.slice(star, star + 2)
+  }
+  return newArr
+}
