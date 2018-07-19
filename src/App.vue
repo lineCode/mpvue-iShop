@@ -2,9 +2,9 @@
 export default {
   created () {
     // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // const logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
 
     console.log('app created and cache logs by setStorageSync')
   }
@@ -33,6 +33,9 @@ export default {
 }
 .red {
   color: #EA5A49;
+}
+.white{
+  color: #ffffff;
 }
 .bg_hui {
   background: #eeeeee;
