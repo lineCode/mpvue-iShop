@@ -14,7 +14,7 @@
 				<swiper-item>
                     <img :src="top" 
                     class="slide-image" 
-                    mode="aspectFill"
+                    mode="scaleToFill"
                     >
 				</swiper-item>
 			</div>

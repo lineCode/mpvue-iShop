@@ -2,7 +2,7 @@
   <div>
     <div class="weui-flex" v-for="(item, index) in items" :key="index">
       <div class="weui-flex__item" v-for="(product, i) in item" :key="i">
-        <div class="placeholder">
+        <div class="placeholder" @click="goDetail(product.uid)">
           <img :src="product.productDefaultImgUrl" alt="" class="logo_img" mode="scaleToFill">
           <div class="product_name">{{product.productName}}</div>
           <div class="product_price red">￥<span class="price-icon">{{product.stringTypePrice}}</span></div>
@@ -13,7 +13,14 @@
 </template>
 <script>
 export default {
-  props: ['items']
+  props: ['items'],
+  methods: {
+    goDetail (uid) {
+      wx.navigateTo({
+        url: '/pages/carDetail/main?uid=' + uid
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
